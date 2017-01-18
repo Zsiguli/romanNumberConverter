@@ -2,103 +2,85 @@ function convertToRoman(num) {
   var romanNumeral = [];
   var numArr = num.toString().split('');
   var numLength = numArr.length;
-  
-  function I() {
-    romanNumeral.push("I");
+
+  function romanCharacter(char) {
+    romanNumeral.push(char);
   }
-  function V() {
-    romanNumeral.push("V");
-  }
-  function X() {
-    romanNumeral.push("X");
-  }
-  function L() {
-    romanNumeral.push("L");
-  }
-  function C() {
-    romanNumeral.push("C");
-   }
-  function D() {
-    romanNumeral.push("D");
-  }
-  function M() {
-    romanNumeral.push("M");
-  }
-  
+
   function fromOneToThree () {
     switch (numLength) {
       case 1:
-        I ();
+        romanCharacter ("I");
         break;
       case 2:
-        X ();
+        romanCharacter ("X");
         break;
       case 3:
-        C ();
+        romanCharacter ("C");
         break;
       case 4:
-        M ();
+        romanCharacter ("M");
         break;
      }
   }
-  
+
   function exactFour () {
     switch (numLength) {
       case 1:
-        I ();
-        V ();
+        romanCharacter ("I");
+        romanCharacter ("V");
         break;
       case 2:
-        X ();
-        L ();
+        romanCharacter ("X");
+        romanCharacter ("L");
         break;
       case 3:
-        C ();
-        D ();
+        romanCharacter ("C");
+        romanCharacter ("D");
         break;
     }
   }
-  
+
   function exactFive () {
     switch (numLength) {
       case 1:
-        V ();
+        romanCharacter ("V");
         break;
       case 2:
-        L ();
+        romanCharacter ("L");
         break;
       case 3:
-        D ();
+        romanCharacter ("D");
         break;
      }
   }
-  
+
   function exactNine () {
     switch (numLength) {
       case 1:
-        I ();
-        X ();
+        romanCharacter ("I");
+        romanCharacter ("X");
         break;
       case 2:
-        X ();
-        C ();
+        romanCharacter ("X");
+        romanCharacter ("C");
         break;
       case 3:
-        C ();
-        M ();
+        romanCharacter ("C");
+        romanCharacter ("M");
         break;
      }
   }
-  
+
   for (var i = 0; i<numArr.length; i++) {
     if (numArr[i] < 4) {
       for (var j = 0; j<numArr[i]; j++) {
         fromOneToThree ();
-      }     
+      }
     } else if (numArr[i] < 5) {
        for (var j = 3; j<numArr[i]; j++) {
         exactFour ();
-      }     
+      }
     } else if (numArr[i] < 9) {
         exactFive ();
         for (var j = 5; j<numArr[i]; j++) {
@@ -111,7 +93,7 @@ function convertToRoman(num) {
     }
     numLength--;
    }
-  
+
  return romanNumeral.join('');
 }
 
